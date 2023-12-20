@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import s from "./CalcForm.module.scss";
 import { toast } from "react-toastify";
+import useAxios from "@/hooks/useAxios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { calculate } from "@/utils";
 
 export default function CalcForm() {
   const [num1, setNum1] = useState("");
@@ -10,37 +13,23 @@ export default function CalcForm() {
   const [op, setOp] = useState("+");
   const [output, setOutput] = useState("__");
 
-  const calculate = (number1, number2, operation) => {
-    let res = 0;
-    switch (operation.toLowerCase()) {
-      case "+":
-        res = number1 + number2;
-        break;
-      case "-":
-        res = number1 - number2;
-        break;
-      case "x":
-        res = number1 * number2;
-        break;
-      case "÷":
-        if (num1 === 0) {
-          toast.error("Zero is not divisible!");
-          break;
-        }
-        if (num2 === 0) {
-          toast.error("A number cannot be divided by Zero!");
-          break;
-        }
-        res = number1 / number2;
-        break;
+  const { axios } = useAxios();
+  const queryClient = useQueryClient();
 
-      default:
-        res = 0;
-        break;
-    }
-
-    return res;
-  };
+  const { mutate } = useMutation({
+    mutationFn: (formData) => axios.post(`/`, formData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["calculations"],
+      });
+    },
+    onError: (error) => {
+      toast.error(
+        error.response.data.message || "Error adding calculation to DB!"
+      );
+      //   setFormSubmitting(false);
+    },
+  });
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -55,6 +44,9 @@ export default function CalcForm() {
       operation: op,
       result,
     };
+
+    // Submit form to backend
+    mutate(data);
 
     console.log(data);
   };

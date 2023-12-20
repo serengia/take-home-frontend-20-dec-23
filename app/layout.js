@@ -14,13 +14,17 @@ import { ToastContainer } from "react-toastify";
 // import 'react-toastify/dist/ReactToastify.css';
 // minified version is also included
 import "react-toastify/dist/ReactToastify.min.css";
+import CustomQueryClientProvider from "@/components/Providers/CustomQueryClientProvider";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
+        <CustomQueryClientProvider>
+          <Header />
+          {children}
+        </CustomQueryClientProvider>
+
         <ToastContainer />
       </body>
     </html>
