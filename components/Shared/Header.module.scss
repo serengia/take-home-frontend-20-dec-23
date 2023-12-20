@@ -1,0 +1,44 @@
+.header {
+  height: 6rem;
+  background-color: var(--color-secondary);
+  color: #fff;
+  .content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo-wrapper {
+      .logo {
+        font-size: 2.4rem;
+        text-transform: uppercase;
+        font-weight: 600;
+
+        @media (max-width: 500px) {
+          font-size: 1.6rem;
+        }
+      }
+    }
+    .nav {
+      ul {
+        list-style: none;
+        display: flex;
+        gap: 4rem;
+        @media (max-width: 500px) {
+          gap: 1rem;
+        }
+        li {
+          a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.2s;
+
+            &:hover {
+              color: var(--color-primary);
+            }
+          }
+        }
+      }
+    }
+  }
+}

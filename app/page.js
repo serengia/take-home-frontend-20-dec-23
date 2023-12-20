@@ -1,30 +1,21 @@
 import Image from "next/image";
 import s from "./page.module.scss";
+import Table from "@/components/Shared/Table";
+import CalcForm from "@/components/Home/CalcForm";
 
 export default function Home() {
   return (
     <main>
-      <h1>Calculator App</h1>
+      <div className={`${s["hero"]} row`}>
+        <h1>Calculator App</h1>
+      </div>
       <div className={`${s["calc-wrapper"]} row`}>
-        <form className={s["form"]}>
-          <div className={s["input-group"]}>
-            <label htmlFor="num1">Num 1</label>
-            <input type="text" />
-          </div>
-          <div className={s["input-group"]}>
-            <select name="operation">
-              <option value="+">+</option>
-              <option value="-">-</option>
-              <option value="x">x</option>
-              <option value="÷">÷</option>
-            </select>
-          </div>
-          <div className={s["input-group"]}>
-            <label htmlFor="num1">Num 1</label>
-            <input type="text" />
-          </div>
-          <button type="submit"> = </button>
-        </form>
+        <CalcForm />
+      </div>
+
+      <div className={`${s["prev-results"]} row`}>
+        <h3>Previous Results:</h3>
+        <Table />
       </div>
     </main>
   );

@@ -1,0 +1,47 @@
+.form-wrapper {
+  .answer-box {
+    margin-top: 4rem;
+    padding: 2rem;
+    border-left: solid 4px #43d596;
+    background-color: rgba(#43d596, 0.3);
+    .answer {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+  row-gap: 1rem;
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+    input,
+    select {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: solid 2px var(--color-primary);
+    }
+    input {
+      min-width: 10rem;
+    }
+  }
+  button {
+    cursor: pointer;
+    padding: 1rem 2rem;
+    background-color: var(--color-primary);
+    color: #fff;
+    font-size: 1.8rem;
+    border-radius: 0.5rem;
+
+    border: none;
+  }
+}

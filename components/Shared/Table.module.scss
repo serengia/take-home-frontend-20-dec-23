@@ -1,0 +1,31 @@
+.table-wrapper {
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 1.4rem;
+  // overflow-x: scroll;
+
+  thead {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  // .calculation-col {
+  //   width: 100%;
+  // }
+}
