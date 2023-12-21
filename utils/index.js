@@ -13,14 +13,11 @@ export const calculate = (number1, number2, operation) => {
       res = number1 * number2;
       break;
     case "÷":
-      if (number1 === 0) {
-        toast.error("Zero is not divisible!");
+      if (number1 === 0 || number2 === 0) {
+        res = "DIVISION-ERR";
         break;
       }
-      if (number2 === 0) {
-        toast.error("A number cannot be divided by Zero!");
-        break;
-      }
+
       res = number1 / number2;
       break;
 

@@ -36,6 +36,9 @@ export default function CalcForm() {
     if (num1 === "" || num2 === "")
       return toast.error("Num1 and Num2 cannot be empty");
     const result = calculate(+num1, +num2, op);
+    if (result === "DIVISION-ERR") {
+      return toast.error("Zero division error!", { autoClose: 1000 });
+    }
     setOutput(result);
     const data = {
       num1,
