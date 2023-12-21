@@ -2,6 +2,7 @@ import Image from "next/image";
 import s from "./page.module.scss";
 import Table from "@/components/Shared/Table";
 import CalcForm from "@/components/Home/CalcForm";
+import FooterLinks from "@/components/Shared/FooterLinks";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <div className={`${s["prev-results"]} row`}>
         <h3>Previous Results:</h3>
         <Table />
+        <FooterLinks />
       </div>
     </main>
   );

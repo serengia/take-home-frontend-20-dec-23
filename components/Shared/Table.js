@@ -13,10 +13,7 @@ export default function Table() {
     queryFn: () => axios.get(`/`),
   });
 
-  console.log("CHECK DATA,", resData);
-  console.log("CHECK DATA error,", isError);
-
-  const { mutate } = useMutation({
+  const { mutate, isLoading: isDeleting } = useMutation({
     mutationFn: (id) => axios.delete(`/${id}`),
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -31,7 +28,6 @@ export default function Table() {
   });
 
   const handleDelete = (id) => {
-    console.log("EVENT TARGET", id);
     mutate(id);
   };
 
@@ -56,7 +52,12 @@ export default function Table() {
                 </td>
                 <td>{item.result}</td>
                 <td>
-                  <button onClick={() => handleDelete(item._id)}>Delete</button>
+                  <button
+                    onClick={() => handleDelete(item._id)}
+                    disabled={isDeleting}
+                  >
+                    {isDeleting ? "Deleting" : "Delete"}
+                  </button>
                 </td>
               </tr>
             );

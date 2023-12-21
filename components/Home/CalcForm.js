@@ -27,13 +27,12 @@ export default function CalcForm() {
       toast.error(
         error.response.data.message || "Error adding calculation to DB!"
       );
-      //   setFormSubmitting(false);
     },
   });
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("Values");
+
     if (num1 === "" || num2 === "")
       return toast.error("Num1 and Num2 cannot be empty");
     const result = calculate(+num1, +num2, op);
@@ -47,8 +46,6 @@ export default function CalcForm() {
 
     // Submit form to backend
     mutate(data);
-
-    console.log(data);
   };
 
   const num1ChangeHandler = (e) => {

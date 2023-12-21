@@ -3,27 +3,4 @@
   h1 {
     margin-bottom: 1rem;
   }
-
-  .links-wrapper {
-    padding: 4rem 0;
-    h3 {
-      margin-bottom: 4px;
-      color: var(--color-primary);
-    }
-  }
-
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-
-    a {
-      text-decoration: none;
-      color: var(--color-secondary);
-      border-bottom: solid 2px var(--color-secondary);
-      padding-bottom: 3px;
-      font-weight: 600;
-      font-size: 1.5rem;
-    }
-  }
 }
