@@ -1,9 +1,10 @@
 .form-wrapper {
   .answer-box {
     margin-top: 4rem;
-    padding: 2rem;
+    padding: 1rem;
     border-left: solid 4px #43d596;
     background-color: rgba(#43d596, 0.3);
+    overflow-x: scroll;
     .answer {
       font-size: 2rem;
       font-weight: 600;
