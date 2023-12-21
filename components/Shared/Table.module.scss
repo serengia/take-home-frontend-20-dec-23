@@ -28,9 +28,5 @@
   button {
     padding: 0.4rem 1rem;
     border: solid 1px #ddd;
-
-    &:disabled {
-      filter: blur(2px);
-    }
   }
 }
