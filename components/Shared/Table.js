@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import s from "./Table.module.scss";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxios from "@/hooks/useAxios";
+import { toast } from "react-toastify";
 
 export default function Table() {
   const { axios } = useAxios();
@@ -13,14 +14,19 @@ export default function Table() {
     queryFn: () => axios.get(`/`),
   });
 
-  const { mutate, isLoading: isDeleting } = useMutation({
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const { mutate } = useMutation({
     mutationFn: (id) => axios.delete(`/${id}`),
     onSuccess: () => {
+      setIsDeleting(false);
+      toast.success("Successfully deleted!", { autoClose: 1000 });
       queryClient.invalidateQueries({
         queryKey: ["calculations"],
       });
     },
     onError: (error) => {
+      setIsDeleting(false);
       toast.error(
         error.response.data.message || "Error deleting calculation to DB!"
       );
@@ -28,6 +34,7 @@ export default function Table() {
   });
 
   const handleDelete = (id) => {
+    setIsDeleting(true);
     mutate(id);
   };
 
@@ -56,7 +63,7 @@ export default function Table() {
                     onClick={() => handleDelete(item._id)}
                     disabled={isDeleting}
                   >
-                    {isDeleting ? "Deleting" : "Delete"}
+                    {isDeleting ? "Deleting..." : "Delete"}
                   </button>
                 </td>
               </tr>
