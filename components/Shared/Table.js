@@ -63,7 +63,7 @@ export default function Table() {
                     onClick={() => handleDelete(item._id)}
                     disabled={isDeleting}
                   >
-                    {isDeleting ? "Deleting..." : "Delete"}
+                    Delete
                   </button>
                 </td>
               </tr>
